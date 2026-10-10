@@ -26,6 +26,8 @@ class ToDoHomeScreen extends StatefulWidget {
 
 class _ToDoHomeScreenState extends State<ToDoHomeScreen> {
   
+  var myList = [];
+
   final _textController = TextEditingController();
   
   
@@ -44,12 +46,18 @@ class _ToDoHomeScreenState extends State<ToDoHomeScreen> {
               controller: _textController,
               decoration: InputDecoration(
               border: OutlineInputBorder(),
-              hintText: "Enter a search term",
+              hintText: "Enter a task",
               ),
              ),
             ),
             ElevatedButton(
-             onPressed: () {},
+             onPressed: () {
+              print("Button pressed text: ${_textController.text}");
+              setState(() {
+              
+              myList.add(_textController.text);
+             });
+             },
              child: Text(" + ")
             ) 
         ],)
