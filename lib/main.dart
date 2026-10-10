@@ -10,11 +10,51 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+      home: ToDoHomeScreen(),
+    );
+  }
+}
+
+class ToDoHomeScreen extends StatefulWidget {
+  const ToDoHomeScreen({
+    super.key,
+  });
+
+  @override
+  State<ToDoHomeScreen> createState() => _ToDoHomeScreenState();
+}
+
+class _ToDoHomeScreenState extends State<ToDoHomeScreen> {
+  
+  final _textController = TextEditingController();
+  
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('ToDo App'),
       ),
+      body: Column(
+        children: [
+        Row(
+          children: [
+            Expanded(
+            child: TextField(
+              controller: _textController,
+              decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Enter a search term",
+              ),
+             ),
+            ),
+            ElevatedButton(
+             onPressed: () {},
+             child: Text(" + ")
+            ) 
+        ],)
+
+      ],),
     );
   }
 }
